@@ -3,7 +3,7 @@ help:
 	@echo ''
 	@echo 'start | stop | restart | stop-all'
 	@echo 'workspace'
-	@echo 'pull'
+	@echo 'build'
 	@echo 'stats'
 
 start:
@@ -20,8 +20,8 @@ stop-all:
 workspace:
 	@docker-compose exec pihole /bin/bash
 
-pull:
-	@docker-compose pull
+build:
+	@docker-compose build --pull
 
 stats:
 	@docker stats
