@@ -3,8 +3,10 @@ help:
 	@echo ''
 	@echo 'start | stop | restart | stop-all'
 	@echo 'workspace'
-	@echo 'build'
+	@echo 'update'
+	@echo 'logs'
 	@echo 'stats'
+	@echo 'clean'
 
 start:
 	@docker-compose up -d --remove-orphans
@@ -20,8 +22,16 @@ stop-all:
 workspace:
 	@docker-compose exec pihole /bin/bash
 
-build:
+_build:
 	@docker-compose build --pull
+
+update: _build start
+
+logs:
+	@docker-compose logs
 
 stats:
 	@docker stats
+
+clean:
+	@docker-compose down -v
