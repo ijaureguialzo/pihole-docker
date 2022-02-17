@@ -7,6 +7,7 @@ help:
 	@echo 'logs'
 	@echo 'stats'
 	@echo 'clean'
+	@echo 'patch-dns-max-1232'
 
 start:
 	@docker-compose up -d --remove-orphans
@@ -35,3 +36,6 @@ stats:
 
 clean:
 	@docker-compose down -v
+
+patch-dns-max-1232:
+	@docker-compose exec pihole /bin/bash -c 'echo "edns-packet-max=1232" > /etc/dnsmasq.d/99-edns.conf'
