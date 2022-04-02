@@ -6,6 +6,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        - PIHOLE_VERSION=${PIHOLE_VERSION:-latest}
     ports:
       - "53:53/tcp"
       - "53:53/udp"

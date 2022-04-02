@@ -1,4 +1,6 @@
-FROM pihole/pihole:latest
+ARG PIHOLE_VERSION
+
+FROM pihole/pihole:${PIHOLE_VERSION}
 
 ENV DEBIAN_FRONTEND noninteractive
 
