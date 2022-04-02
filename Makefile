@@ -3,7 +3,7 @@ help:
 	@echo ''
 	@echo 'start | stop | restart | stop-all'
 	@echo 'workspace'
-	@echo 'update'
+	@echo 'build | update'
 	@echo 'logs'
 	@echo 'stats'
 	@echo 'clean'
@@ -23,10 +23,10 @@ stop-all:
 workspace:
 	@docker-compose exec pihole /bin/bash
 
-_build:
+build:
 	@docker-compose build --pull
 
-update: _build start
+update: build start
 
 logs:
 	@docker-compose logs
