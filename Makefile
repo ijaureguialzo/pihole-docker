@@ -1,32 +1,46 @@
-help:
-	@echo 'Opciones:'
-	@echo ''
-	@echo 'start | stop | restart | stop-all'
-	@echo 'workspace'
-	@echo 'build | update'
-	@echo 'logs'
-	@echo 'stats'
-	@echo 'clean'
-	@echo 'patch-dns-max-1232'
+#!make
 
-start:
+help: _header
+	${info }
+	@echo Opciones:
+	@echo ----------------------
+	@echo start / stop / restart
+	@echo ----------------------
+	@echo build / update
+	@echo workspace
+	@echo logs / stats
+	@echo clean
+	@echo patch-dns-max-1232
+	@echo ----------------------
+
+_header:
+	@echo -------
+	@echo Pi-hole
+	@echo -------
+
+_urls: _header
+	${info }
+	@echo --------------------------------------
+	@echo [Pi-hole] http://localhost:8080/admin/
+	@echo --------------------------------------
+
+_start-command:
 	@docker compose up -d --remove-orphans
+
+start: _start-command _urls
 
 stop:
 	@docker compose stop
 
 restart: stop start
 
-stop-all:
-	@docker stop `docker ps -aq`
-
-workspace:
-	@docker compose exec pihole /bin/bash
-
 build:
 	@docker compose build --pull
 
 update: build start
+
+workspace:
+	@docker compose exec pihole /bin/bash
 
 logs:
 	@docker compose logs
