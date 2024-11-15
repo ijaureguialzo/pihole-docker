@@ -12,7 +12,7 @@ services:
       - "8080:80/tcp"
     environment:
       TZ: 'Europe/Madrid'
-      WEBPASSWORD: ''
+      WEBPASSWORD: ${WEBPASSWORD}
     volumes:
       - pihole_config:/etc/pihole/
       - pihole_dnsmasq:/etc/dnsmasq.d/
