@@ -18,8 +18,8 @@ services:
       - pihole_dnsmasq:/etc/dnsmasq.d/
       - pihole_logs:/var/log/
     dns:
-      - 127.0.0.1
       - 1.1.1.1
+      - 1.0.0.1
     restart: unless-stopped
 
 volumes:
