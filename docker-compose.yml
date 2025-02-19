@@ -7,12 +7,12 @@ services:
       args:
         - PIHOLE_VERSION=${PIHOLE_VERSION:-latest}
     ports:
-      - "53:53/tcp"
-      - "53:53/udp"
+      - "${DNS_PORT:-53}:53/tcp"
+      - "${DNS_PORT:-53}:53/udp"
       - "8080:80/tcp"
     environment:
       TZ: 'Europe/Madrid'
-      WEBPASSWORD: ${WEBPASSWORD}
+      FTLCONF_webserver_api_password: ${WEBPASSWORD:-12345Abcde}
     volumes:
       - pihole_config:/etc/pihole/
       - pihole_dnsmasq:/etc/dnsmasq.d/
