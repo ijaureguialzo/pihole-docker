@@ -20,9 +20,9 @@ _header:
 
 _urls: _header
 	${info }
-	@echo --------------------------------------
-	@echo [Pi-hole] http://localhost:8080/admin/
-	@echo --------------------------------------
+	@echo ---------------------------------------
+	@echo [Pi-hole] https://localhost:8080/admin/
+	@echo ---------------------------------------
 
 _start-command:
 	@docker compose up -d --remove-orphans
