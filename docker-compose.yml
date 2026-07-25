@@ -7,8 +7,8 @@ services:
       args:
         - PIHOLE_VERSION=${PIHOLE_VERSION:-latest}
     ports:
-      - "${DNS_PORT:-53}:53/tcp"
-      - "${DNS_PORT:-53}:53/udp"
+      - "${DNS_LISTEN_ADDRESS:-0.0.0.0}:${DNS_PORT:-53}:53/tcp"
+      - "${DNS_LISTEN_ADDRESS:-0.0.0.0}:${DNS_PORT:-53}:53/udp"
       - "${WEB_PORT:-8080}:443/tcp"
     environment:
       TZ: 'Europe/Madrid'
