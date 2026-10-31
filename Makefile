@@ -1,5 +1,12 @@
 #!make
 
+ifneq (,$(wildcard ./.env))
+    include .env
+    export
+else
+$(error No se encuentra el fichero .env)
+endif
+
 help: _header
 	${info }
 	@echo Opciones:
@@ -21,7 +28,7 @@ _header:
 _urls: _header
 	${info }
 	@echo ---------------------------------------
-	@echo [Pi-hole] https://localhost:8080/admin/
+	@echo [Pi-hole] https://localhost:${WEB_PORT}/admin/
 	@echo ---------------------------------------
 
 _start-command:
